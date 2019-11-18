@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Syllabificator</title>
+    <link rel="stylesheet" href="static/style.css">
+    <link rel="Contribute" href="add.html">
+</head>
+<body>
+    <div id="page-container">
+        
+    <div id="content-wrap">
+
+   <div id="header">
+       <h2> Yoruba Syllabyifier</h2>
+   </div>
+
+    <div id="Syllabifyer">
+        <form action="/syllabify" method="POST">
+               Input Yoruba Text Here:<br/>
+               <textarea name="text" id="write" rows="10" cols="30"> </textarea><br/>
+               <input type="submit" value="Syllabify">
+        </form>
+        
+        <form action="add.html">
+            <button type="button">Contribute</button>
+        </form>
+    </div> 
+
+    <div id="container">
+    
+        <ul id="keyboard">
+            <li class="symbol"><span class="off">`</span><span class="on">~</span></li>
+            <li class="symbol"><span class="off">1</span><span class="on">!</span></li>
+            <li class="symbol"><span class="off">2</span><span class="on">@</span></li>
+            <li class="symbol"><span class="off">3</span><span class="on">#</span></li>
+            <li class="symbol"><span class="off">4</span><span class="on">$</span></li>
+            <li class="symbol"><span class="off">5</span><span class="on">%</span></li>
+            <li class="symbol"><span class="off">6</span><span class="on">^</span></li>
+            <li class="symbol"><span class="off">7</span><span class="on">&amp;</span></li>
+            <li class="symbol"><span class="off">8</span><span class="on">*</span></li>
+            <li class="symbol"><span class="off">9</span><span class="on">(</span></li>
+            <li class="symbol"><span class="off">0</span><span class="on">)</span></li>
+            <li class="symbol"><span class="off">-</span><span class="on">_</span></li>
+            <li class="symbol"><span class="off">=</span><span class="on">+</span></li>
+            <li class="delete lastitem">delete</li>
+            <li class="tab">tab</li>
+            <li class="letter">a</li>
+            <li class="letter">b</li>
+            <li class="letter">d</li>
+            <li class="letter">e</li>
+            <li class="letter">&#7865;</li>
+            <li class="letter">f</li>
+            <li class="letter">g</li>
+            <li class="letter">gb</li>
+            <li class="letter">&ugrave;</li>0
+            <li class="letter">i</li>
+            <li class="letter">j</li>
+            <li class="capslock">caps lock</li>
+            <li class="letter">k</li>
+            <li class="letter">l</li>
+            <li class="letter">m</li>
+            <li class="letter">n</li>
+            <li class="letter">o</li>
+            <li class="letter">&#7885;</li>
+            <li class="letter">p</li>
+            <li class="letter">r</li>
+            <li class="letter">s</li>
+            <li class="return lastitem">return</li>
+            <li class="left-shift">shift</li>
+            <li class="letter">&#7779;</li>
+            <li class="letter">t</li>
+            <li class="letter">u</li>
+            <li class="letter">w</li>
+            <li class="letter">y</li>
+            <li class="letter">&#7865;&#x0300;</li>
+            <li class="letter">&#7885;&#x0300;</li>
+            <li class="letter">&#7865;&#x0301;</li>
+            <li class="letter">&#7885;&#x0301;</li>
+            <li class="symbol"><span class="off">,</span><span class="on">&lt;</span></li>
+            <li class="symbol"><span class="off">.</span><span class="on">&gt;</span></li>
+            <li class="symbol"><span class="off">/</span><span class="on">?</span></li>
+            <li class="space lastitem">&nbsp;</li>
+        </ul>
+</div>
+     
+   <div id="footer">
+        <p>&copy; 2019 Copyright Systems Eng. </p>
+   </div>
+   
+ 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+$(function(){
+    var $write = $('#write'),
+		shift = false,
+		capslock = false;
+	
+	$('#keyboard li').click(function(){
+		var $this = $(this),
+			character = $this.html(); // If it's a lowercase letter, nothing happens to this variable
+		
+		// Shift keys
+		if ($this.hasClass('left-shift') || $this.hasClass('right-shift')) {
+			$('.letter').toggleClass('uppercase');
+			$('.symbol span').toggle();
+			
+			shift = (shift === true) ? false : true;
+			capslock = false;
+			return false;
+		}
+		
+		// Caps lock
+		if ($this.hasClass('capslock')) {
+			$('.letter').toggleClass('uppercase');
+			capslock = true;
+			return false;
+		}
+		
+		// Delete
+		if ($this.hasClass('delete')) {
+			var html = $write.html();
+			
+			$write.html(html.substr(0, html.length - 1));
+			return false;
+		}
+		
+		// Special characters
+		if ($this.hasClass('symbol')) character = $('span:visible', $this).html();
+		if ($this.hasClass('space')) character = ' ';
+		if ($this.hasClass('tab')) character = "\t";
+		if ($this.hasClass('return')) character = "\n";
+		
+		// Uppercase letter
+		if ($this.hasClass('uppercase')) character = character.toUpperCase();
+		
+		// Remove shift once a key is clicked.
+		if (shift === true) {
+			$('.symbol span').toggle();
+			if (capslock === false) $('.letter').toggleClass('uppercase');
+			
+			shift = false;
+		}
+		
+		// Add the character
+		$write.html($write.html() + character);
+	});
+})
+</script>
+<script>
+
+</script>
+</body>
+</html>

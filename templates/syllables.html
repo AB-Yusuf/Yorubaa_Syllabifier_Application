@@ -1,0 +1,5 @@
+<!doctype html>
+<title>Hello from Flask</title>
+{% for word in words %}
+    <li>{{ word }} --- {{syllables[loop.index - 1] }}</li>
+{% endfor %}

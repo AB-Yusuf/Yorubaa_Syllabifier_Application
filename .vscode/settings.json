@@ -1,3 +1,4 @@
 {
-    "python.pythonPath": "C:\\Users\\user\\envs\\mywebsite\\Scripts\\python.exe"
+    "python.pythonPath": "C:\\Users\\user\\envs\\mywebsite\\Scripts\\python.exe",
+    "liveServer.settings.port": 5501
 }

@@ -9,19 +9,20 @@
     <link rel="Contribute" href="add.html">
 </head>
 <body>
-    <div id="page-container">
+
+<div id="page-container">
         
-    <div id="content-wrap">
+<div id="content-wrap">
 
-   <div id="header">
-       <h2> Yoruba Syllabyifier</h2>
-   </div>
+<div class="header" id="header" >
+    <h2> Yoruba Syllabyifier</h2>
+</div>
 
-    <div id="Syllabifyer">
+    <div class="Syllabifyer" id="Syllabifyer">
         <form action="/syllabify" method="POST">
-               Input Yoruba Text Here:<br/>
-               <textarea name="text" id="write" rows="10" cols="30"> </textarea><br/>
-               <input type="submit" value="Syllabify">
+        Input Yoruba Text Here:<br/>
+    <textarea name="text" class="write" id="write" rows="10" cols="30"> </textarea><br/>
+    <input class="submit" type="submit" value="Syllabify">
         </form>
         
         <form action="add.html">
@@ -29,9 +30,9 @@
         </form>
     </div> 
 
-    <div id="container">
+    <div class="container" id="container">
     
-        <ul id="keyboard">
+        <ul class="keyboard clearfix" id="keyboard">
             <li class="symbol"><span class="off">`</span><span class="on">~</span></li>
             <li class="symbol"><span class="off">1</span><span class="on">!</span></li>
             <li class="symbol"><span class="off">2</span><span class="on">@</span></li>
@@ -85,12 +86,11 @@
             <li class="space lastitem">&nbsp;</li>
         </ul>
 </div>
-     
-   <div id="footer">
+
+<div class="footer">
         <p>&copy; 2019 Copyright Systems Eng. </p>
-   </div>
-   
- 
+</div>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 <script type="text/javascript">
